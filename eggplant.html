@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Promise Page 💖</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1b1b2f, #3a0a2d); /* dark love theme */
+            font-family: 'Segoe Script', cursive;
+            text-align: center;
+            overflow: hidden;
+            color: #ffb6c1;
+        }
+
+        img.gif-header {
+            width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ff69b4;
+        }
+
+        h1 {
+            font-size: 38px;
+            color: #ffb6c1;
+            text-shadow: 2px 2px 10px #ff69b4;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 25px;
+            margin: 10px 0 30px 0;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            background: #ff69b4;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255,105,180,0.7);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ff4d6d;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Eggplant GIF -->
+    <img src="eggplant.gif" alt="Eggplant GIF" class="gif-header">
+
+    <h1>But before we see the surprise Miss</h1>
+    <p>Do you promise to not cook Boulange?</p>
+
+    <!-- Buttons -->
+    <div>
+        <button onclick="location.href='book.html'">Yes 💕</button>
+        <button onclick="alert('Oh no! You need to promise first 😅')">No 😬</button>
+    </div>
+
+    <script>
+        // Floating hearts
+        setInterval(() => {
+            let heart = document.createElement("div");
+            heart.innerHTML = "💗";
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 20 + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }, 500);
+    </script>
+
+</body>
+</html>

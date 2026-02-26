@@ -1,0 +1,152 @@
+<!-- measure.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Measuring Beauty...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #1b1b2f, #3a0a2d);
+      color: #ffb6c1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    img.gif-header {
+      width: 200px;
+      height: auto;
+      margin-bottom: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff69b4;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    .loading-container {
+      width: 80%;
+      max-width: 400px;
+      background: #2b2b3f;
+      border-radius: 20px;
+      margin-top: 1rem;
+      position: relative;
+      height: 30px;
+      overflow: visible;
+    }
+
+    .loading-bar {
+      height: 100%;
+      width: 0%;
+      background: #ff69b4;
+      border-radius: 20px;
+      transition: width 0.05s;
+    }
+
+    .caption {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .percentage {
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: floatUp 2s linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(1.5);
+      }
+    }
+
+    /* Next surprise link style */
+    .next-link {
+      display: none;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #ff69b4;
+      text-decoration: none;
+      border: 2px solid #ff69b4;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .next-link:hover {
+      transform: scale(1.1);
+      background: #ff69b4;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <img src="Bear2.gif" alt="Cute Bear" class="gif-header">
+
+  <h1>Wait for it Miss 😘</h1>
+  <div class="percentage" id="percentage">0%</div>
+  <div class="loading-container">
+    <div class="loading-bar" id="loadingBar"></div>
+  </div>
+  <div class="caption" id="caption">Measuring</div>
+
+  <!-- Link to next surprise -->
+  <a href="eggplant.html" id="nextLink" class="next-link">Move to Surprise</a>
+
+  <script>
+    let width = 0;
+    const loadingBar = document.getElementById('loadingBar');
+    const caption = document.getElementById('caption');
+    const percentage = document.getElementById('percentage');
+    const container = document.body;
+    const nextLink = document.getElementById('nextLink');
+
+    const interval = setInterval(() => {
+      if (width < 200) {
+        width += 1;
+        loadingBar.style.width = width + '%';
+        percentage.textContent = width + '%';
+
+        // Create hearts after 100%
+        if(width > 100 && width % 5 === 0) {
+          const heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.textContent = '💖';
+          heart.style.left = (Math.random() * 80 + 10) + '%';
+          heart.style.fontSize = (10 + Math.random() * 20) + 'px';
+          container.appendChild(heart);
+
+          setTimeout(() => {
+            heart.remove();
+          }, 2000);
+        }
+      } else {
+        clearInterval(interval);
+        caption.textContent = "Wow! 💖 Your beauty is overflowing!";
+        nextLink.style.display = "inline-block"; // show link after loading finishes
+      }
+    }, 50);
+  </script>
+</body>
+</html>
