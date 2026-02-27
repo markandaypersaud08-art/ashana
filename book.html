@@ -9,6 +9,9 @@
 </head>
 
 <body>
+  <audio id="bgMusic" loop>
+    <source src="koinaa.mp3" type="audio/mpeg">
+  </audio>
   <div class="flipbook">
     <div class="hard"> Welcome Miss <br><br> <div class="special"><img src="bear4.gif" alt="Cute Bear" class="gif-header"></div> To The <br><br> Cutest Book Ever Made ..... Ever</div>
     <div class="hard"></div>
@@ -113,8 +116,21 @@
   <script>
     $(".flipbook").turn();
   </script>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("click", function () {
+            const music = document.getElementById("bgMusic");
+
+            if (music) {
+                music.volume = 1.0;
+                music.play().catch(err => console.log(err));
+            }
+        }, { once: true });
+    });
+  </script>
 </body>
 
 
 </html>
+
 
