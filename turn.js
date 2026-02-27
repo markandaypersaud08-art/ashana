@@ -1081,7 +1081,7 @@
         var data = this.data().f,
             width = this.width(),
             height = this.height(),
-            edgeSize = width * 0.25; // Increase for more sensitive edge flipping
+            edgeSize = width * 0.5; // Increase for more sensitive edge flipping
 
         a = { x: a.x, y: a.y, corner: "" };
 
@@ -1898,3 +1898,4 @@
   };
   f.findPos = C;
 })(jQuery);
+
